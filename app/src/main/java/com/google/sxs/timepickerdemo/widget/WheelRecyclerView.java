@@ -1,6 +1,7 @@
 package com.google.sxs.timepickerdemo.widget;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
@@ -32,7 +33,7 @@ public class WheelRecyclerView extends RecyclerView {
     /**
      * 选项高度
      */
-    private int mItemHeight = 100;
+    private int mItemHeight = dp2px(50);
     /**
      * 处于中间的item为选中，在头尾需补充 offset个空白view，可显示的item数量=2*offset+1
      */
@@ -148,17 +149,18 @@ public class WheelRecyclerView extends RecyclerView {
 
             //上下透明渐变遮罩层
             Paint pTop = new Paint();
-            LinearGradient lg = new LinearGradient(0, 0, 0, mItemHeight * mOffset,
+            int yHeight = mItemHeight * mOffset;
+            LinearGradient lg = new LinearGradient(0, 0, 0, yHeight,
                     0xdfe5e5e5,
                     0x00000000, Shader.TileMode.CLAMP);
             pTop.setShader(lg);
-            c.drawRect(startX, topY - mItemHeight * mOffset, endX, topY, pTop);
+            c.drawRect(startX, topY - yHeight, endX, topY, pTop);
             Paint pBottom = new Paint();
-            LinearGradient lg2 = new LinearGradient(0, bottomY, 0, bottomY + mItemHeight * mOffset,
+            LinearGradient lg2 = new LinearGradient(0, bottomY, 0, bottomY + yHeight,
                     0x00000000,
                     0xdfe5e5e5, Shader.TileMode.CLAMP);
             pBottom.setShader(lg2);
-            c.drawRect(startX, bottomY, endX, bottomY + mItemHeight * mOffset, pBottom);
+            c.drawRect(startX, bottomY, endX, bottomY + yHeight, pBottom);
         }
     }
 
@@ -205,5 +207,14 @@ public class WheelRecyclerView extends RecyclerView {
          * @param data
          */
         void onSelect(int position, String data);
+    }
+
+    /**
+     * dp转px
+     *
+     * @param dp
+     */
+    public static int dp2px(float dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density + 0.5f);
     }
 }
