@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tv_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="取消"
+            android:textColor="#666"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="选择营业时间段"
+            android:textColor="#333"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="确定"
+            android:textColor="#ff5811"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+    <View style="@style/CommonDividerTheme" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+            android:id="@+id/wheel_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+            android:id="@+id/wheel_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+            android:id="@+id/wheel_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+            android:id="@+id/wheel_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+            android:id="@+id/wheel_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>
+
