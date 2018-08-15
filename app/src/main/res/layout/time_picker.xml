@@ -1,88 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#fff">
 
-    <FrameLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_exit"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#fff">
+        android:layout_gravity="start"
+        android:background="?selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="取消"
+        android:textColor="#666"
+        android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="?selectableItemBackgroundBorderless"
-            android:gravity="center"
-            android:padding="12dp"
-            android:text="取消"
-            android:textColor="#666"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="?selectableItemBackgroundBorderless"
-            android:gravity="center"
-            android:padding="12dp"
-            android:text="选择营业时间段"
-            android:textColor="#333"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/tv_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="?selectableItemBackgroundBorderless"
-            android:gravity="center"
-            android:padding="12dp"
-            android:text="确定"
-            android:textColor="#ff5811"
-            android:textSize="16sp" />
-    </FrameLayout>
-
-    <View style="@style/CommonDividerTheme" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:background="?selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="选择营业时间段"
+        android:textColor="#333"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
-            android:id="@+id/wheel_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="?selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="确定"
+        android:textColor="#ff5811"
+        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
-            android:id="@+id/wheel_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <View
+        android:id="@+id/driver"
+        style="@style/CommonDividerTheme"
+        app:layout_constraintTop_toBottomOf="@id/tv_exit" />
 
-        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
-            android:id="@+id/wheel_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+        android:id="@+id/wheel_1"
+        style="@style/TimePickerWheelTheme"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/wheel_2" />
 
-        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
-            android:id="@+id/wheel_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+        android:id="@+id/wheel_2"
+        style="@style/TimePickerWheelTheme"
+        app:layout_constraintLeft_toRightOf="@+id/wheel_1"
+        app:layout_constraintRight_toLeftOf="@+id/wheel_3" />
 
-        <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
-            android:id="@+id/wheel_5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-</LinearLayout>
+    <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+        android:id="@+id/wheel_3"
+        style="@style/TimePickerWheelTheme"
+        app:layout_constraintLeft_toRightOf="@+id/wheel_2"
+        app:layout_constraintRight_toLeftOf="@+id/wheel_4" />
+
+    <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+        android:id="@+id/wheel_4"
+        style="@style/TimePickerWheelTheme"
+        app:layout_constraintLeft_toRightOf="@+id/wheel_3"
+        app:layout_constraintRight_toLeftOf="@+id/wheel_5" />
+
+    <com.google.sxs.timepickerdemo.widget.WheelRecyclerView
+        android:id="@+id/wheel_5"
+        style="@style/TimePickerWheelTheme"
+        app:layout_constraintLeft_toRightOf="@+id/wheel_4"
+        app:layout_constraintRight_toRightOf="parent" />
+</android.support.constraint.ConstraintLayout>
 

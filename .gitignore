@@ -1,9 +1,26 @@
 *.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+build.xml
+local.properties
+/gradlew
+/gradlew.bat
+/gradle
+# Ant builds
+ant-build
+ant-gen
+# Eclipse builds
+gen
+out
+# Gradle builds
+build
+.gradle/
+.idea/
+.settings/
+bin
+gen/
+*.apk
+*.ap_
+*.dex
+*.class
 .DS_Store
-/build
-/captures
-.externalNativeBuild
+gradle.properties
+*.iml

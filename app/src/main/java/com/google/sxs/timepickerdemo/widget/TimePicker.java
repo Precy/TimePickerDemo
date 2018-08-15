@@ -84,12 +84,7 @@ public class TimePicker implements PopupWindow.OnDismissListener, View.OnClickLi
         mWheelRv2.setData(mMinuteDatas);
         mWheelRv3.setData(middleData);
 
-        mWheelRv1.setOnSelectListener(new WheelRecyclerView.OnSelectListener() {
-            @Override
-            public void onSelect(int position, String data) {
-                initEndData();
-            }
-        });
+        mWheelRv1.setOnSelectListener((position, data) -> initEndData());
     }
 
     private void initEndData() {
@@ -125,7 +120,7 @@ public class TimePicker implements PopupWindow.OnDismissListener, View.OnClickLi
     }
 
     public void attachView(View attachView) {
-        commonHideSystemSoftKeyboard(mContext, attachView);
+        Utils.commonHideSystemSoftKeyboard(mContext, attachView);
         backgroundAlpha(0.5f);
         mPickerWindow.showAtLocation(mParent, Gravity.BOTTOM, 0, 0);
     }
@@ -144,8 +139,8 @@ public class TimePicker implements PopupWindow.OnDismissListener, View.OnClickLi
                     String startMinute = mMinuteDatas.get(mWheelRv2.getSelected());
                     String endHour = mEndHourDatas.get(mWheelRv4.getSelected());
                     String endMinute = mMinuteDatas.get(mWheelRv5.getSelected());
-                    mOnTimeSelectListener.onTimeSelect(getInteger(startHour), getInteger(startMinute),
-                            getInteger(endHour), getInteger(endMinute));
+                    mOnTimeSelectListener.onTimeSelect(Utils.getInteger(startHour), Utils.getInteger(startMinute),
+                            Utils.getInteger(endHour), Utils.getInteger(endMinute));
                     mPickerWindow.dismiss();
                 }
                 break;
@@ -159,7 +154,7 @@ public class TimePicker implements PopupWindow.OnDismissListener, View.OnClickLi
 
     public interface OnTimeSelectListener {
         /**
-         * 确认选择的回调
+         * 确认选择回调
          *
          * @param startHour
          * @param startMinute
@@ -169,24 +164,5 @@ public class TimePicker implements PopupWindow.OnDismissListener, View.OnClickLi
         void onTimeSelect(int startHour, int startMinute, int endHour, int endMinute);
     }
 
-    /**
-     * 隐藏系统输入法
-     *
-     * @param context
-     * @param v
-     */
-    public static void commonHideSystemSoftKeyboard(Context context, View v) {
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-    }
 
-    /**
-     * 提取数字
-     */
-    public static int getInteger(String content) {
-        final String REG_NUMBER = "[^0-9]";
-        Pattern p = Pattern.compile(REG_NUMBER);
-        Matcher m = p.matcher(content);
-        return Integer.parseInt(m.replaceAll("").trim());
-    }
 }
